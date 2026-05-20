@@ -1,0 +1,41 @@
+__main__:
+  train_session:
+    num_epochs: 50
+  initialize_3d_tilted_sampling:
+    real_oversampling_factor: [1.0, 1.0]
+    fourier_oversampling_factor: [1.0, 1.0]
+  reconstruct:
+    preprocess_functions:
+      - !@ center_scan_positions
+      - !@ wavelength_units
+      - !@ normalize_by_mean_intensity
+      - !@ apply_orientation
+
+  apply_orientation:
+    orientation: 3
+  
+  PtychographyModel_initializer:
+    probe_initializer: !@ probe/aperture
+
+  initialize_optimizer_and_state:
+    optimizers:
+      - !@ fast/make_optimizer_specification()
+      - !@ sparse/make_optimizer_specification()
+
+sparse:
+  make_optimizer_specification:
+    base_optimizer: !@ optax.adam
+    match_patterns:
+      - ".*reflection_coefficient.*"
+    learn_rate: -1e-4
+
+fast:
+  make_optimizer_specification:
+    base_optimizer: !@ optax.adam
+    match_patterns:
+      - ".*probe.data"
+    learn_rate: -1e-4
+probe:
+  aperture:
+    radius: [20, 20]
+    normalize: True

@@ -1,0 +1,50 @@
+__main__:
+  ptyrax:
+    dataset_load_fn: !@ from_hdf5
+    preprocess_functions:
+      - !@ fftshift_ptychogram
+      - !@ intensity_to_amplitude
+    seed: 42
+    simulate: False
+    profile: False
+
+  train_session:
+    num_epochs: 1
+
+  batch:
+    batch_size: 4
+    shuffle_mode: "random"
+
+  train:
+    model_type: !@ PtychographyModel
+
+  initialize_optimizer_and_state:
+    optimizers:
+      - !@ fast/make_optimizer_specification()
+      - !@ sparse/make_optimizer_specification()
+
+# Example named groups used by optimizer factories and model initializers
+fast:
+  make_optimizer_specification:
+    base_optimizer: !@ optax.adam
+    match_patterns:
+      - ".*probe.data"
+    learn_rate: -1e-4
+
+sparse:
+  make_optimizer_specification:
+    base_optimizer: !@ optax.adam
+    match_patterns:
+      - ".*reflection_coefficient.*"
+    learn_rate: -1e-5
+
+probe:
+  aperture:
+    radius: [20, 20]
+    normalize: True
+
+apply_orientation:
+  orientation: 0
+
+PtychographyModel_initializer:
+  probe_initializer: !@ probe/aperture

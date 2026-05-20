@@ -1,0 +1,40 @@
+# Editor and OS
+.vscode
+**/.DS_Store
+
+# Python environments and caches
+.venv/
+.venv-docs/
+.venv-old
+**/__pycache__/
+.pytest_cache/
+
+# Local tool configuration
+.env
+.flake8
+ruff.toml
+.sourcery.yaml
+
+# Temporary and scratch files
+*scratch
+temp_tests/
+
+# Logs and test outputs
+logs/
+test_results.xml
+*.tfevents.*
+
+# Build and docs artifacts
+_build/
+docs/_build/
+docs/jupyter_execute/
+docs/source/_autosummary/
+
+# Data and experiment artifacts
+/dvc_configs
+notebooks/
+*.cxi
+*.hdf5
+*.spe
+*.mp4
+*.gif

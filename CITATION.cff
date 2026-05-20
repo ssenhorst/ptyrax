@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Senhorst
+    given-names: Sander
+    orcid: https://orcid.org/0009-0005-9069-9584
+title: "Ptyrax: A differentiable optics simulation and reconstruction toolbox"
+version: 0.3.0
+date-released: 2026-05-22

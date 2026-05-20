@@ -1,0 +1,383 @@
+__main__:
+
+# ==============================================================================
+# From ptyrax/__main__.py
+# ==============================================================================
+  main:
+    sweep_id: null
+  ptyrax:
+    mode: reconstruct
+    debug: false
+    sweep_id: null
+  set_seed:
+    seed: 42
+
+# ==============================================================================
+# From ptyrax/dataset.py
+# ==============================================================================
+  add_poisson_noise:
+    photons_per_count: null
+    total_photon_count: null
+    total_power: null
+    wavelength: null
+    exposure_time: null
+    diffraction_pattern_normalized: true
+  apply_orientation:
+    orientation: 0
+    darkframe_orientation: null
+  batch:
+    batch_size: 1
+    shuffle_mode: random
+  clip_low_intensity:
+    pixel_ratio: 0.9
+  cut_center:
+    ratio: 0.5
+  exclude_positions_by_distance:
+    min_distance: -1.0
+    max_distance: 9999.0
+  from_cxi:
+    background_path: null
+  from_hdf5:
+    convert_to_standard: true
+  make_constant_tilt_angle:
+    detector_tilt_angle: null
+  make_multiwavelength:
+    wavelength_amount_factor: 1
+  normalize_by_max:
+    new_max: 1.0
+  quantize_diffraction_patterns:
+    dynamic_range_bits: 14
+    overexpose_fraction: 0.0
+  scale_length_unit:
+    scale: 1.0
+  shift_to_center_of_mass:
+    order: 2
+  subtract_background:
+    orientation: 0
+  subtract_low_intensity:
+    pixel_ratio: 0.9
+
+# ==============================================================================
+# From ptyrax/field.py
+# ==============================================================================
+  plot_field:
+    show: true
+  replace_defocus:
+    axis: xy
+
+# ==============================================================================
+# From ptyrax/initializers.py
+# ==============================================================================
+  aperture:
+    radius: null
+    normalize: true
+    defocus: 0.0
+  binary_complex_image:
+    image_pixel_size: 1.0
+    scale: 1.0
+    image_shift:
+    - 0.0
+    - 0.0
+    threshold: 0.5
+    high_amplitude: 1.0
+    high_phase: 0.0
+    low_amplitude: 0.0
+    low_phase: 0.0
+    normalize: false
+  binary_reflection_image:
+    image_pixel_size: 1.0
+    image_shift:
+    - 0.0
+    - 0.0
+    threshold: 0.5
+    high_refl_material: Al
+    high_trans_material: null
+    low_refl_material: Si
+    low_trans_material: null
+    wavelength: 1.0
+    angle_of_incidence: 0.0
+    thickness: 0.0
+    thickness_wavelength_units: false
+    polarization: p
+  custom:
+    weight: 1.0
+    std: null
+    radius: null
+    noise_level: 0.1
+    defocus: 0.0
+    scale: 1.0
+  from_test_images:
+    amplitude_image: camera
+    phase_image: astronaut
+  gaussian:
+    std: null
+    radius: null
+    noise_level: 0.0
+    defocus: 0.0
+    NA: null
+    wavelength: 1.0
+    normalize: false
+    key: null
+  random_phase_mask:
+    scale: 1.0
+    normalize: false
+  siemens_star:
+    num_spokes: 36
+    radius: null
+    anti_aliasing_factor: 1.0
+    normalize: true
+    min_value: 0.0
+    max_value: 1.0
+  speckle:
+    std: null
+    radius: null
+    noise_level: 0.0
+    defocus: 0.0
+    NA: null
+    wavelength: 1.0
+    normalize: false
+    key: null
+  support:
+    size: null
+    decay_length: 1.0
+    linear_power: 2
+    linear_size: null
+  uniform:
+    scale: 1.0
+    normalize: true
+  usaf_test_target:
+    high_amplitude: 1.0
+    high_phase: 0.0
+    low_amplitude: 0.0
+    low_phase: 0.0
+    scale: 1.0
+    center:
+    - 0.0
+    - 0.0
+    normalize: false
+    svg_path: null
+    binarization_threshold: 200
+    svg_physical_size_m: 0.1
+
+# ==============================================================================
+# From ptyrax/logger.py
+# ==============================================================================
+  log_on_epoch_end:
+    debug: false
+    diff_pat_gamma: 0.5
+    log_every: 1
+  log_on_train_start:
+    debug: false
+
+# ==============================================================================
+# From ptyrax/models/interaction.py
+# ==============================================================================
+  to_single_slice_approximation:
+    tilt_angle: 0.0
+    wavelength: 1.0
+
+# ==============================================================================
+# From ptyrax/models/propagation.py
+# ==============================================================================
+  propagate_tilted:
+    interpolation_mode: real_imaginary
+    propagator_type: fraunhofer
+    apply_jacobian: false
+
+# ==============================================================================
+# From ptyrax/models/ptychography.py
+# ==============================================================================
+  PtychographyModel_initializer:
+    tensorboard_writer: null
+    fixed_sampling: null
+  add_wavelength_channels:
+    additional_wavelengths: 0
+  dropout:
+    apply_every: 1
+    max_epoch: 1800
+    probe_re: .*probe.*data
+    interaction_re: .*interaction.*data
+    fraction: 0.5
+    fraction_decay: 0.983
+    key: null
+  initialize_3d_tilted_sampling:
+    n_dim: 2
+    probe_fourier_oversampling_factor: null
+    writer: null
+    epoch: null
+    prefix: ''
+  make_multislice:
+    separable_in_z: false
+    inverted_bottom: true
+    symmetric: false
+  multiply_interaction_xiz_function:
+    tilt_angle: 0.0
+    thickness: 0.0
+  plot_model:
+    show: true
+    fig: null
+    ax: null
+  preprocess_model:
+    preprocess_functions: []
+  reinitialize_interaction:
+    new_type: null
+  reinitialize_interaction_inverted:
+    new_type: null
+  replace_illumination_from_hdf5:
+    hdf5_illumination_path: illumination
+    illumination_adjustment_fns: null
+    data_only: false
+    normalize: false
+  replace_interaction_from_hdf5:
+    hdf5_interaction_path: interaction
+  scale_illumination_equal_pixel_size:
+    scale: 1.0
+  scale_model_wavelength:
+    scale: 1.0
+    rescale_illumination: true
+  scale_scan_range:
+    scale: 1.0
+  set_illumination_total_energy:
+    total_energy: 1.0
+  set_mean_phase:
+    target_mean_phase: 0.0
+  set_model_constant_tilt_angle:
+    tilt_angle: 0.0
+    detector_tilt_angle: null
+  set_model_wavelength:
+    wavelength: 1.0
+    rescale_illumination: true
+  set_outside_scan_range_to:
+    extra_range_factor: 1.0
+    deviation_scale: 0.2
+    apply_every: 1
+  shift_probe_and_interaction:
+    apply_every: 1
+    max_epoch: 1800
+    probe_re: .*probe.*data
+    interaction_re: .*interaction.*data
+    order: 1
+
+# ==============================================================================
+# From ptyrax/parametrizations.py
+# ==============================================================================
+  NormalizedArrayParametrization:
+    scale: 1.0
+    scaling_function: null
+  mean_l2_norm:
+    axes:
+    - -3
+    - -2
+
+# ==============================================================================
+# From ptyrax/reconstruct.py
+# ==============================================================================
+  reconstruct:
+    preprocess_functions: []
+    continue_from_reconstruction: null
+    sweep_id: null
+  train_session:
+    num_epochs: 30
+    epoch_callbacks: []
+    initial_epoch: 0
+
+# ==============================================================================
+# From ptyrax/simulate.py
+# ==============================================================================
+  post_simulation:
+    output_file: null
+    save_equinox_model: true
+    postprocess_functions: []
+  simulate:
+    preprocess_functions: []
+    continue_from_reconstruction: null
+    sweep_id: null
+    log_dir: null
+    dataset_path: null
+
+# ==============================================================================
+# From ptyrax/spatial.py
+# ==============================================================================
+  shift_with_interpolation_unequal_pixel_size:
+    interpolation_mode: real_imaginary
+
+# ==============================================================================
+# From ptyrax/training.py
+# ==============================================================================
+  _scale_by_adam_thresholded:
+    threshold: 1e-08
+    b1: 0.9
+    b2: 0.999
+    eps: 1e-08
+    eps_root: 0.0
+    mu_dtype: null
+    nesterov: false
+  _scale_schedule_steps_by_epoch:
+    epoch_size: 1
+  adam_thresholded:
+    b1: 0.9
+    b2: 0.999
+    eps: 1e-08
+    eps_root: 0.0
+    threshold: 1e-08
+    mu_dtype: null
+    nesterov: false
+  initialize_optimizer_and_state:
+    optimizers: null
+  l1:
+    weight: 0.0
+  l2:
+    weight: 0.0
+  make_optimizer_specification:
+    learn_rate: null
+    learn_rate_schedule: null
+    optimizer_pre_transforms: []
+    optimizer_wrappers: []
+    optimizer_post_transforms: []
+    schedule_wrappers: []
+  mixed_mean_square_error:
+    eps: 0.01
+  parameter_l1:
+    weight: 0.0
+  relative_mean_square_error:
+    eps: 0.01
+  relative_mean_square_error_per_pixel:
+    eps: 1e-08
+  support_l1:
+    weight: 0.0
+  support_l2:
+    weight: 0.0
+  support_overlap:
+    weight: 0.0
+  threshold_relative_mean_square_error:
+    eps: 0.01
+    threshold: 0.0004
+  tv:
+    weight: 0.0
+    tv_mode: real_imag
+
+# ==============================================================================
+# From ptyrax/utils.py
+# ==============================================================================
+  compute_center_of_mass_shift:
+    order: 1
+  load_hdf5:
+    key_translation: null
+  plot_complex:
+    log10: false
+    cmap: hsv
+    gamma: 1
+    title: null
+    clim: null
+    cbar: null
+  plot_real:
+    title: null
+    cmap: null
+    gamma: 1.0
+    cbar: false
+    log10: false
+    epsilon: 1e-10
+  scaled_mean:
+    scale: 1.0
+  soft_clip:
+    scale: 1.0

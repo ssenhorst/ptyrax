@@ -291,7 +291,7 @@ class CoherentField(eqx.Module):
         pupil_meshgrid = pupil_meshgrid + internal_propagation_direction[:2, None, None] / self.wavelength
 
         pupil_xi_z = jnp.sqrt(n_medium**2 / (self.wavelength) ** 2 - jnp.sum(pupil_meshgrid**2, axis=0))
-        valid = ~jnp.isnan(pupil_xi_z)
+        valid = ~jnp.isnan(pupil_xi_z) & (pupil_xi_z.imag == 0)
         pupil_xi_z = jnp.nan_to_num(pupil_xi_z, nan=0.0)
         return pupil_xi_z, valid
 

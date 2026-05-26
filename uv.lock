@@ -523,7 +523,7 @@ wheels = [
 [[package]]
 name = "chromatix"
 version = "0.5.0"
-source = { git = "https://github.com/chromatix-team/chromatix.git#a607a9f192e873e52632d8e16bdb8bb12a00aaa0" }
+source = { git = "https://github.com/chromatix-team/chromatix.git?rev=main#a607a9f192e873e52632d8e16bdb8bb12a00aaa0" }
 dependencies = [
     { name = "chex" },
     { name = "einops" },
@@ -3345,7 +3345,7 @@ dev = [
 requires-dist = [
     { name = "cairosvg", specifier = ">=2.8.2" },
     { name = "chex" },
-    { name = "chromatix", git = "https://github.com/chromatix-team/chromatix.git" },
+    { name = "chromatix", git = "https://github.com/chromatix-team/chromatix.git?rev=main" },
     { name = "dvc", specifier = ">=3.65.0" },
     { name = "equinox" },
     { name = "gin-config" },

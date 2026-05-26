@@ -50,7 +50,7 @@ dependencies = [
     "periodictable>=2.0.2",
     "dvc>=3.65.0",
     "cairosvg>=2.8.2",
-    "chromatix",
+    "chromatix @ git+https://github.com/chromatix-team/chromatix.git@main",
 ]
 
 [project.optional-dependencies]
@@ -81,6 +81,9 @@ dev = [
     "ruff",
     "docformatter>=1.7.7",
 ]
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [tool.pytest]
 testpaths = ["ptyrax"]
@@ -165,9 +168,6 @@ docstring-code-format = true
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
 docstring-code-line-length = "dynamic"
-
-[tool.uv.sources]
-chromatix = { git = "https://github.com/chromatix-team/chromatix.git" }
 
 [tool.ruff.lint.pycodestyle]
 max-line-length = 120

@@ -48,19 +48,19 @@ uv run --extra "cuda" ptyrax [reconstruct, simulate, experiment] [PTYCHOGRAM] [O
 
 To install the package locally, use
 
-```{bash}
+```{code} bash
 python3 -m venv .venv
 source ./.venv/bin/activate
 ```
 
 to create and activate a virtual environment. To install non-GPU version, use
 
-```{bash}
+```{code} bash
 python3 -m pip install .
 ```
 
 and for the GPU version use
 
-```{bash}
+```{code} bash
 python3 -m pip install .[cuda]
 ```

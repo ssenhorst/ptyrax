@@ -161,10 +161,14 @@ class ImageDataset(ABC):
 
     __array_priority__ = 1000
 
+
 class SimpleImageDataset(ImageDataset):
-    """A simple implementation of ImageDataset that just wraps a single array of
-    images. This can be used for simple cases where no additional metadata is
-    needed."""
+    """A simple implementation of ImageDataset that just wraps a single array
+    of images.
+
+    This can be used for simple cases where no additional metadata is
+    needed.
+    """
 
     def __init__(self, images: ArrayLike) -> None:
         self._images = np.array(images)
@@ -172,7 +176,7 @@ class SimpleImageDataset(ImageDataset):
     @property
     def images(self) -> Shaped[Array, "d m n"]:
         return self._images
-    
+
     def to_gpu(self) -> None:
         self._images = jnp.array(self._images)
 

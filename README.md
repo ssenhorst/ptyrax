@@ -115,13 +115,13 @@ After the reconstruction process has completed, the output will become available
 
 ## Documentation
 
-The docs can be built and viewed using
+The documentation is hosted on [readthedocs](https://ptyrax.readthedocs.io/en/latest/). We recommend getting started with a [basic reconstruction tutorial](https://ptyrax.readthedocs.io/en/latest/tutorials/basic_reconstruction.html).
+
+Alternatively, the docs can be built and viewed using
 
 ```{bash}
 make docs-serve
 ```
-
-Online access is coming soon! A good place to get started, is to check out the tutorials in `docs/source/tutorials`.
 
 ## Contributing
 
